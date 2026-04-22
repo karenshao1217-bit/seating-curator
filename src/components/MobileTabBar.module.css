@@ -1,0 +1,26 @@
+.bar {
+  display: flex;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.tab {
+  flex: 1;
+  padding: 12px 0;
+  background: none;
+  border-radius: 0;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.tab.active {
+  color: var(--color-text);
+  font-weight: 600;
+  background: var(--color-bg);
+}
