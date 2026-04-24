@@ -16,7 +16,9 @@ Phase 5 · 交給 Claude Code 實作用
 | 4. 桌旁列表 · 細節 | 私人主桌 / 商業衝突桌 | Side-mode 的單桌放大版 |
 | 5. 衝突狀態 · 總覽 | 私人 / 商業 | 示範衝突視覺語言在總覽情境下的樣子 |
 
-兩個主題（`data-direction="A"` 低調專業、`data-direction="C"` 溫暖場域）對所有 artboards 都生效。Direction B（現代清爽）存在於 `tokens.css` 但 Phase 5 未使用，可選擇保留或移除。
+兩個主題以語意化命名：`data-theme="private"`（私人晚宴）與 `data-theme="business"`（商業活動），對所有 artboards 都生效。artboard 表格中的「私人 / 商業」即對應這兩個 theme。
+
+> 歷史註：早期原型曾用抽象代號 `data-direction="A|B|C"`，已在 2026-04 統一改為語意化 `data-theme`，未來若延伸到其他專案（如 Poise）可直接複用「private / business」這種普世場景概念。
 
 ---
 
@@ -24,15 +26,15 @@ Phase 5 · 交給 Claude Code 實作用
 
 ### 2.1 Tokens 架構
 
-所有 design tokens 定義在 `tokens.css`，用 `[data-direction="A|B|C"]` 屬性切換 scope。實作時請完整保留這個結構——主題切換是改父層 `data-direction`，不是重載 stylesheet。
+所有 design tokens 定義在 `tokens.css`，用 `[data-theme="private|business"]` 屬性切換 scope。實作時請完整保留這個結構——主題切換是改父層 `data-theme`，不是重載 stylesheet。
 
 **共用 tokens（`:root`）**：
 - `--radius-xs|sm|md|lg`：2 / 4 / 6 / 10 px
 - `--space-1..12`：4 / 8 / 12 / 16 / 20 / 24 / 32 / 40 / 48 px
 
-**每個 direction 定義**：
+**每個 theme 定義**：
 - `--font-zh` / `--font-en` / `--font-mono`：字型堆疊
-- `--fs-micro..display`：字級 ramp（direction A 為標準：10 / 11 / 14 / 15 / 18 / 24 / 32 / 44）
+- `--fs-micro..display`：字級 ramp（兩個主題的 ramp 不同，見下表）
 - `--bg-canvas / bg-surface / bg-sunken / bg-hover`：4 層背景
 - `--ink-1|2|3`：3 層文字
 - `--line-1|2|3`：3 層線條
@@ -42,29 +44,62 @@ Phase 5 · 交給 Claude Code 實作用
 - `--avoid`：衝突／避免（紅色語意）
 - `--shadow-sm|md`
 
-### 2.2 兩個 Direction 的色彩特徵
+### 2.2 兩個 Theme 的完整 Tokens
 
-| Token | A · 低調專業 | C · 溫暖場域 |
+下表為從 `Seating Curator Phase 5 v2 standalone` 原型反推的精確值，實作時請 1:1 對應：
+
+| Token | `private` · 私人晚宴 | `business` · 商業活動 |
 |---|---|---|
-| bg-canvas | `#f4efe6` 米白 | `#ede3d2` 暖沙 |
-| bg-surface | `#fbf7ef` 奶油 | `#f6eedd` 深米 |
-| ink-1 | `#1a1916` 黑墨 | `#2a2419` 咖啡墨 |
-| accent | `#1a1916` 黑 | `#4a5132` 暗橄欖 |
-| vip | `#8a6b2e` 古金 | `#a87f3c` 暖金 |
-| avoid | `#8a2a2a` 牛血紅 | `#7a2b2b` 酒紅 |
-| font-zh | Noto Serif TC | Noto Serif TC |
-| font-en | Cormorant Garamond | IBM Plex Serif |
+| **字型** | | |
+| `--font-zh` | `"Noto Serif TC", "Songti TC", serif` | `"Noto Sans TC", "PingFang TC", sans-serif` |
+| `--font-en` | `"Cormorant Garamond", "EB Garamond", Georgia, serif` | `"Inter", "Helvetica Neue", sans-serif` |
+| `--font-mono` | `"IBM Plex Mono", ui-monospace, monospace` | `"IBM Plex Mono", ui-monospace, monospace` |
+| **字級 ramp**（襯線名較窄可放大，無襯線名較寬須縮小） | | |
+| `--fs-micro` | `10px` | `10px` |
+| `--fs-caption` | `11px` | `11px` |
+| `--fs-body` | `14px` | `13px` |
+| `--fs-h3` | `19px` | `17px` |
+| `--fs-h2` | `26px` | `22px` |
+| `--fs-h1` | `34px` | `28px` |
+| `--fs-display` | `46px` | `38px` |
+| **4 層背景** | | |
+| `--bg-canvas` | `#f4efe6` 米白 | `#f5f6f7` 冷白 |
+| `--bg-surface` | `#fbf7ef` 奶油 | `#ffffff` 純白 |
+| `--bg-sunken` | `#ebe5d8` | `#edeef1` |
+| `--bg-hover` | `#efe9dc` | `#f0f1f3` |
+| **3 層文字** | | |
+| `--ink-1` | `#1a1916` 黑墨 | `#0a1020` 深藍黑 |
+| `--ink-2` | `#4a4740` | `#3a4050` |
+| `--ink-3` | `#8c877c` | `#8a8f9a` |
+| **3 層線條** | | |
+| `--line-1` | `#2a2721` | `#0a1020` |
+| `--line-2` | `#c8c1b0` | `#ced2d9` |
+| `--line-3` | `#e1dbcd` | `#e5e7eb` |
+| **主色** | | |
+| `--accent` | `#1a1916` | `#0a1020` |
+| `--accent-soft` | `#ebe5d8` | `#e0e3e8` |
+| **語意色** | | |
+| `--vip` | `#8a6b2e` 古金 | `#b08d4a` 暖金 |
+| `--must` | `#2a4b2d` 墨綠 | `#1f3b34` 深綠 |
+| `--avoid` | `#8a2a2a` 牛血紅 | `#b3261e` 商業紅 |
+| **陰影** | | |
+| `--shadow-sm` | `0 1px 0 rgba(26,25,22,0.06)` | `0 1px 2px rgba(10,16,32,0.04)` |
+| `--shadow-md` | `0 2px 8px rgba(26,25,22,0.09)` | `0 4px 14px rgba(10,16,32,0.08)` |
 
-兩個主題都用襯線字（刻意——宴會規劃需要一點古典感）。差異在 Direction C 的英文字是 IBM Plex Serif（幾何感較強的襯線），底色偏暖。
+**主題差異說明**：
+- **Private** 用襯線字＋暖米底＋墨金點綴——塑造古典宴會儀式感
+- **Business** 用無襯線字（Inter）＋冷白底＋深藍黑——塑造商業場合的清爽權威
+- **VIP** 兩個主題都是金色但調性不同（private 偏古金內斂、business 偏亮金顯眼）
+- **字級 ramp 刻意不一致**：Inter 字形較寬，body 縮為 13px 以維持密度；Cormorant 較窄，body 放到 14px 平衡視覺重量
 
 ### 2.3 字型載入
 
-GitHub repo 應預先 `@import` 或 `<link>` 這些 Google Fonts：
-- Noto Serif TC（400/600/700）
-- Noto Sans TC（400/500/600）
-- Cormorant Garamond（400/500/600）
-- IBM Plex Serif（400/500/600）
-- Inter（400/500/600）（Direction B 用，可選）
+`index.html` 需 `<link>` 載入這些 Google Fonts：
+- **Noto Serif TC**（400/600/700）— private 中文
+- **Noto Sans TC**（400/500/600）— business 中文
+- **Cormorant Garamond**（400/500/600）— private 英文
+- **Inter**（400/500/600）— business 英文
+- **IBM Plex Mono**（400/500）— 兩個主題共用（編號、座號等等寬場景）
 
 ### 2.4 共用樣式規則
 
@@ -124,7 +159,7 @@ GitHub repo 應預先 `@import` 或 `<link>` 這些 Google Fonts：
 
 ### 3.4 VIP 視覺
 
-- 字色 `var(--vip)`（Direction A 古金 / Direction C 暖金）
+- 字色 `var(--vip)`（private 古金 / business 暖金）
 - 字重 600 或 700
 - VIP 位於衝突桌時，**保留金色**——衝突用背景色表達，不搶字色
 
@@ -145,20 +180,20 @@ GitHub repo 應預先 `@import` 或 `<link>` 這些 Google Fonts：
 實作時：
 
 ```html
-<html data-direction="A">
+<html data-theme="private">
   <!-- ... -->
 </html>
 ```
 
-或包在特定 container：
+或包在特定 container（活動層級可切換不同主題）：
 
 ```html
-<div data-direction="C">
-  <!-- 整個 app -->
+<div data-theme="business">
+  <!-- 整個 app 或單一活動 -->
 </div>
 ```
 
-切換只需改這個屬性，所有 CSS custom properties 自動更新。**不要**用 JS 重載 stylesheet，也**不要**用 class（如 `.theme-a`）——一律 `data-direction`，這是 tokens.css 的既定 scope。
+切換只需改這個屬性，所有 CSS custom properties 自動更新。**不要**用 JS 重載 stylesheet，也**不要**用 class（如 `.theme-private`）——一律 `data-theme`，這是 tokens.css 的既定 scope。
 
 主題切換應提供 UI 控制項（Phase 5 prototype 中在 design canvas 的 artboard 層級）。實作時建議：
 - 設定頁 toggle
@@ -255,18 +290,10 @@ Prototype 是 hardcoded 衝突。實作時：
 - 列表捲動或
 - 自動切換該桌為 seat-mode 顯示（因列表太長失去「一眼對照」的價值）
 
-### 6.6 Direction B 是否保留
+### 6.6 Dark mode
 
-`tokens.css` 有 Direction B（現代清爽）定義但 Phase 5 未使用。產品決策：
-- 保留 → 未來如果做 admin/data view 可能適用
-- 移除 → 減少 token 維護成本
-
-建議先保留，產品 launch 後評估是否用到。
-
-### 6.7 Dark mode
-
-目前兩個 direction 都是 light。如需 dark variant：
-- 新增 `[data-direction="A"][data-theme="dark"]` 覆寫
+目前兩個 theme（`private` / `business`）都是 light。如需 dark variant：
+- 新增 `[data-theme="private"][data-mode="dark"]` 覆寫
 - 避免另開 `--bg-canvas-dark` 這類 token，一律透過 scope 覆寫
 
 ---
@@ -277,8 +304,8 @@ Prototype 檔案結構（實作時可參考拆分方式）：
 
 | 檔案 | 內容 |
 |---|---|
-| `tokens.css` | 所有 design tokens，`[data-direction]` scope |
-| `theme-a.css` | 應用層 CSS（可合併入 tokens.css 或拆成 global styles） |
+| `tokens.css` | 所有 design tokens，`[data-theme]` scope |
+| `theme.css` | 應用層 CSS（可合併入 tokens.css 或拆成 global styles） |
 | `atoms.jsx` | 基礎元件（button, pill, chip 等） |
 | `board-seating-p5.jsx` | 主要元件：`TableCard`, `SeatingP5`, `formatName`, `NoteChip`, `StatPill` |
 | `data.jsx` | mock 賓客資料（實作時改為 API） |
@@ -291,7 +318,7 @@ Prototype 檔案結構（實作時可參考拆分方式）：
 
 實作 Phase 5 前，驗收下列視覺規則：
 
-- [ ] 切換 `data-direction="A"` ↔ `"C"`，所有顏色、字型、字級正確更新
+- [ ] 切換 `data-theme="private"` ↔ `"business"`，所有顏色、字型、字級正確更新
 - [ ] 座位標記模式：桌面顯示桌號 + 座號 1-N，名字在桌邊
 - [ ] 桌旁列表模式：桌面顯示桌號 + 座號 1-N（**與 seat-mode 相同**），名字在旁邊編號列表
 - [ ] 總覽模式：長英文名縮寫為 `Firstname L.`
