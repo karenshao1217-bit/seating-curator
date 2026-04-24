@@ -174,7 +174,6 @@ export default function GuestFormModal(props: Props) {
     <div className={styles.overlay} onClick={onClose}>
       <div
         className={styles.modal}
-        data-theme="private"
         onClick={(e) => e.stopPropagation()}
       >
         <div className={styles.header}>

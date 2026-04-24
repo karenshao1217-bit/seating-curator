@@ -63,7 +63,6 @@ export default function GroupFormModal(props: Props) {
     <div className={styles.overlay} onClick={onClose}>
       <div
         className={styles.modal}
-        data-theme="private"
         onClick={(e) => e.stopPropagation()}
       >
         <p className={styles.microLabel}>

@@ -61,12 +61,12 @@ export default function SidePanel({ eventId }: Props) {
 
       <div className={styles.content}>
         {activeTab === 'guests' && (
-          <div className={styles.themed} data-theme="private">
+          <div className={styles.themed}>
             <GuestsPanel eventId={eventId} />
           </div>
         )}
         {activeTab === 'groups' && (
-          <div className={styles.themed} data-theme="private">
+          <div className={styles.themed}>
             <GroupsPanel eventId={eventId} />
           </div>
         )}

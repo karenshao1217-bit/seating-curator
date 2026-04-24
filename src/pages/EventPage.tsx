@@ -12,6 +12,7 @@ import VenueCanvas from '../components/canvas/VenueCanvas'
 import CanvasToolbar from '../components/canvas/CanvasToolbar'
 import AddTableModal, { type AddTableData } from '../components/canvas/AddTableModal'
 import PdfPageSelector from '../components/canvas/PdfPageSelector'
+import SettingsPanel from '../components/settings/SettingsPanel'
 import { getTableDisplaySize } from '../utils/generateSeats'
 import { getPdfPageCount, renderPdfPage } from '../utils/pdfToImage'
 import { uploadImageFile, uploadPdfBlob } from '../utils/uploadVenueImage'
@@ -233,9 +234,11 @@ export default function EventPage() {
     </div>
   )
 
+  const theme = event.theme ?? 'private'
+
   if (isDesktop) {
     return (
-      <div className={styles.desktopLayout}>
+      <div className={styles.desktopLayout} data-theme={theme}>
         {fileInput}
         <header className={styles.topBar}>
           <button className={styles.backBtn} onClick={() => navigate('/')}>
@@ -245,6 +248,7 @@ export default function EventPage() {
           {collaborator.displayName && (
             <span className={styles.userName}>{collaborator.displayName}</span>
           )}
+          <SettingsPanel eventId={eventId} currentTheme={theme} />
         </header>
 
         <div className={styles.desktopBody}>
@@ -274,7 +278,7 @@ export default function EventPage() {
 
   // Mobile layout
   return (
-    <div className={styles.mobileLayout}>
+    <div className={styles.mobileLayout} data-theme={theme}>
       {fileInput}
       <header className={styles.topBar}>
         <button className={styles.backBtn} onClick={() => navigate('/')}>
@@ -284,6 +288,7 @@ export default function EventPage() {
         {collaborator.displayName && (
           <span className={styles.userName}>{collaborator.displayName}</span>
         )}
+        <SettingsPanel eventId={eventId} currentTheme={theme} />
       </header>
 
       <main className={styles.mobileContent} ref={!isDesktop ? canvasContainerRef : undefined}>

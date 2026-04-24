@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { collection, doc, setDoc, serverTimestamp } from 'firebase/firestore'
 import { db } from '../lib/firebase'
 import { useAuth } from '../hooks/useAuth'
+import type { EventTheme } from '../hooks/useEvent'
 import styles from './NewEventPage.module.css'
 
 type CollaborationMode = 'open' | 'soft' | 'strict'
@@ -11,6 +12,29 @@ const MODE_OPTIONS: { value: CollaborationMode; label: string; desc: string }[] 
   { value: 'open', label: '開放', desc: '任何人可直接進入，不詢問暱稱' },
   { value: 'soft', label: '彈性', desc: '詢問暱稱，但可略過' },
   { value: 'strict', label: '嚴格', desc: '必須填寫暱稱才能進入' },
+]
+
+const THEME_OPTIONS: {
+  value: EventTheme
+  label: string
+  desc: string
+  accent: string
+  sample: string
+}[] = [
+  {
+    value: 'private',
+    label: '私人晚宴',
+    desc: '米白 + 襯線字，親密精緻感',
+    accent: '#8d6b2e',
+    sample: 'bg-canvas #f4efe6 · Cormorant Garamond',
+  },
+  {
+    value: 'business',
+    label: '商業活動',
+    desc: '冷白 + 無襯線字，清爽權威感',
+    accent: '#0a1020',
+    sample: 'bg-canvas #f5f6f7 · Inter',
+  },
 ]
 
 function addToMyEvents(id: string, name: string) {
@@ -29,6 +53,7 @@ export default function NewEventPage() {
   const { ensureAuth } = useAuth()
   const [name, setName] = useState('')
   const [mode, setMode] = useState<CollaborationMode>('soft')
+  const [theme, setTheme] = useState<EventTheme>('private')
   const [submitting, setSubmitting] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -49,6 +74,7 @@ export default function NewEventPage() {
         venueImageWidth: null,
         venueImageHeight: null,
         collaborationMode: mode,
+        theme,
       })
 
       await setDoc(doc(db, 'events', eventId, 'sessions', 'default'), {
@@ -85,6 +111,37 @@ export default function NewEventPage() {
             className={styles.input}
           />
         </label>
+
+        <fieldset className={styles.fieldset}>
+          <legend className={styles.legend}>主題</legend>
+          <div className={styles.themeGrid}>
+            {THEME_OPTIONS.map((opt) => (
+              <label
+                key={opt.value}
+                className={`${styles.themeCard} ${theme === opt.value ? styles.themeCardActive : ''}`}
+              >
+                <input
+                  type="radio"
+                  name="eventTheme"
+                  value={opt.value}
+                  checked={theme === opt.value}
+                  onChange={() => setTheme(opt.value)}
+                  className={styles.themeRadio}
+                />
+                <span
+                  className={styles.themeAccent}
+                  style={{ background: opt.accent }}
+                  aria-hidden="true"
+                />
+                <span className={styles.themeText}>
+                  <strong className={styles.themeLabel}>{opt.label}</strong>
+                  <span className={styles.themeDesc}>{opt.desc}</span>
+                  <span className={styles.themeSample}>{opt.sample}</span>
+                </span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
 
         <fieldset className={styles.fieldset}>
           <legend className={styles.legend}>協作模式</legend>

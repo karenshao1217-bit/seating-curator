@@ -46,6 +46,74 @@
   padding: 16px;
 }
 
+/* Theme selector (二選一卡片式) */
+.themeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.themeCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  background: #fff;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.themeCard:hover {
+  background: #fafafa;
+}
+
+.themeCardActive {
+  border-color: var(--color-primary);
+  background: #fafafa;
+}
+
+.themeRadio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.themeAccent {
+  width: 100%;
+  height: 32px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.themeText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.themeLabel {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.themeDesc {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+.themeSample {
+  font-size: 0.7rem;
+  color: #999;
+  font-family: ui-monospace, monospace;
+  margin-top: 2px;
+}
+
 .legend {
   font-size: 0.9rem;
   font-weight: 600;

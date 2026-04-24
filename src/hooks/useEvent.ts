@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { doc, onSnapshot } from 'firebase/firestore'
 import { db } from '../lib/firebase'
 
+export type EventTheme = 'private' | 'business'
+
 export interface EventData {
   name: string
   createdAt: unknown
@@ -10,6 +12,8 @@ export interface EventData {
   venueImageWidth: number | null
   venueImageHeight: number | null
   collaborationMode: 'open' | 'soft' | 'strict'
+  /** Design theme for this event. Missing field defaults to 'private'. */
+  theme?: EventTheme
 }
 
 export function useEvent(eventId: string | undefined) {
