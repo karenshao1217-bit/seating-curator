@@ -85,7 +85,7 @@
   --group-color-1: #8a6b2e;  /* 古金 */
   --group-color-2: #2a4b2d;  /* 墨綠 */
   --group-color-3: #2c3a5a;  /* 靛青 */
-  --group-color-4: #4a5132;  /* 暗橄欖 */
+  --group-color-4: #5a7040;  /* 森綠（提亮飽和以區分 slot 8） */
   --group-color-5: #5c2b3d;  /* 暗紫梅 */
   --group-color-6: #6a7e90;  /* 灰藍 */
   --group-color-7: #a89d87;  /* 暖石灰 */
@@ -144,7 +144,7 @@
   --group-color-1: #b08d4a;  /* 暖金 */
   --group-color-2: #1f3b34;  /* 深綠 */
   --group-color-3: #1d2554;  /* 深靛藍（比 slot 4 石藍更紫更深） */
-  --group-color-4: #2c4a6b;  /* 石藍 */
+  --group-color-4: #3560a0;  /* 中藍（提亮飽和以區分 slot 8 石墨） */
   --group-color-5: #6b3a56;  /* 冷紫梅 */
   --group-color-6: #6a8ab0;  /* 淺石藍 */
   --group-color-7: #a8adb5;  /* 冷石灰 */

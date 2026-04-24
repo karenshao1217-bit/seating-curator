@@ -12,7 +12,7 @@ const SLOTS: Slot[] = [
   { key: '1', name: '古金 / 暖金', privateHex: '#8a6b2e', businessHex: '#b08d4a' },
   { key: '2', name: '墨綠 / 深綠', privateHex: '#2a4b2d', businessHex: '#1f3b34' },
   { key: '3', name: '靛青 / 深靛藍', privateHex: '#2c3a5a', businessHex: '#1d2554' },
-  { key: '4', name: '暗橄欖 / 石藍', privateHex: '#4a5132', businessHex: '#2c4a6b' },
+  { key: '4', name: '森綠 / 中藍', privateHex: '#5a7040', businessHex: '#3560a0' },
   { key: '5', name: '暗紫梅 / 冷紫梅', privateHex: '#5c2b3d', businessHex: '#6b3a56' },
   { key: '6', name: '灰藍 / 淺石藍', privateHex: '#6a7e90', businessHex: '#6a8ab0' },
   { key: '7', name: '暖石灰 / 冷石灰', privateHex: '#a89d87', businessHex: '#a8adb5' },
