@@ -64,6 +64,16 @@
   padding: 16px;
 }
 
+/* When a tab's content uses new design tokens, wrap it in .themed
+ * with data-theme="..." so the inner UI picks up the token scope. */
+.themed {
+  margin: -16px;
+  min-height: 100%;
+  background: var(--bg-canvas);
+  color: var(--ink-1);
+  font-family: var(--font-zh);
+}
+
 .placeholder {
   color: var(--color-text-secondary);
   font-size: 0.85rem;

@@ -251,7 +251,7 @@ export default function EventPage() {
           <main className={styles.canvasArea} ref={canvasContainerRef}>
             {canvasContent}
           </main>
-          <SidePanel />
+          <SidePanel eventId={eventId} />
         </div>
 
         {showAddTable && (
