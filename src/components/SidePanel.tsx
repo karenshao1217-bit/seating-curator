@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import GroupsPanel from './guests/GroupsPanel'
+import GuestsPanel from './guests/GuestsPanel'
 import styles from './SidePanel.module.css'
 
 type Tab = 'guests' | 'groups' | 'changelog'
@@ -60,10 +61,8 @@ export default function SidePanel({ eventId }: Props) {
 
       <div className={styles.content}>
         {activeTab === 'guests' && (
-          <div className={styles.emptyState}>
-            <p className={styles.emptyTitle}>還沒有賓客</p>
-            <p className={styles.emptySubtitle}>可匯入 CSV 或手動新增</p>
-            <button className={styles.emptyBtn}>新增賓客</button>
+          <div className={styles.themed} data-theme="private">
+            <GuestsPanel eventId={eventId} />
           </div>
         )}
         {activeTab === 'groups' && (
