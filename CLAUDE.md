@@ -94,9 +94,9 @@ const PAPER_SIZES = {
 
 ## 開發順序
 
-1. 基礎框架：Vite + React + TypeScript + Firebase + 路由
-2. 場地編輯器：Konva canvas + 三種桌型
-3. PDF/圖片底圖上傳
+1. ✅ 基礎框架：Vite + React + TypeScript + Firebase + 路由
+2. ✅ 場地編輯器：Konva canvas + 三種桌型
+3. ✅ PDF/圖片底圖上傳
 4. 賓客管理
 5. 座位指派
 6. 即時協作 + changelog
