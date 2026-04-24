@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage'
 import NewEventPage from './pages/NewEventPage'
 import EventPage from './pages/EventPage'
 import ThemeTestPage from './pages/ThemeTestPage'
+import PaletteTestPage from './pages/PaletteTestPage'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Route path="/event/new" element={<NewEventPage />} />
       <Route path="/event/:eventId" element={<EventPage />} />
       <Route path="/test-tokens" element={<ThemeTestPage />} />
+      <Route path="/test-palette" element={<PaletteTestPage />} />
     </Routes>
   )
 }
