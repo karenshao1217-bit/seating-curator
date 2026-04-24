@@ -1,0 +1,138 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--bg-canvas);
+  border: 1px solid var(--line-3);
+  border-radius: var(--radius-sm);
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.label {
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--ink-3);
+}
+
+.count {
+  font-family: var(--font-en);
+  font-size: var(--fs-caption);
+  color: var(--ink-2);
+  letter-spacing: var(--tracking-wide);
+}
+
+.emptyHint {
+  font-family: var(--font-zh);
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+  text-align: center;
+  padding: var(--space-3);
+}
+
+.search {
+  padding: 4px var(--space-2);
+  background: var(--bg-surface);
+  color: var(--ink-1);
+  font-family: var(--font-zh);
+  font-size: var(--fs-caption);
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-xs);
+  outline: none;
+}
+
+.search:focus {
+  border-color: var(--accent);
+}
+
+.search::placeholder {
+  color: var(--ink-3);
+}
+
+.list {
+  max-height: 180px;
+  overflow-y: auto;
+  background: var(--bg-surface);
+  border: 1px solid var(--line-3);
+  border-radius: var(--radius-xs);
+}
+
+.noMatch {
+  font-family: var(--font-zh);
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+  text-align: center;
+  padding: var(--space-3);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px var(--space-2);
+  border-bottom: 1px solid var(--line-3);
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.row:hover {
+  background: var(--bg-hover);
+}
+
+.row.rowChecked {
+  background: var(--bg-sunken);
+}
+
+.checkbox {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.groupDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--line-2);
+  flex-shrink: 0;
+}
+
+.name {
+  font-family: var(--font-zh);
+  font-size: var(--fs-caption);
+  color: var(--ink-1);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.name.nameVip {
+  color: var(--vip);
+  font-weight: 600;
+}
+
+.meta {
+  font-family: var(--font-zh);
+  font-size: var(--fs-micro);
+  color: var(--ink-3);
+  margin-left: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 40%;
+}
