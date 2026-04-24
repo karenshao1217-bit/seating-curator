@@ -1,0 +1,339 @@
+.outer {
+  min-height: 100vh;
+  background: #e0e0e0;
+  padding: 24px;
+}
+
+/* Controls live OUTSIDE the data-theme scope (stays neutral) */
+.controls {
+  max-width: 960px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 16px 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.backLink {
+  color: #666;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.backLink:hover {
+  color: #333;
+}
+
+.controlsTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333;
+  margin-right: auto;
+}
+
+.toggle {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.toggleBtn {
+  padding: 8px 14px;
+  background: #fff;
+  color: #555;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.toggleBtn.active {
+  background: #333;
+  color: #fff;
+}
+
+.currentTheme {
+  font-size: 0.8rem;
+  color: #777;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.currentTheme code {
+  background: #f0f0f0;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: ui-monospace, monospace;
+}
+
+/* ---------- Scoped area (all tokens resolve here) ---------- */
+
+.scope {
+  max-width: 960px;
+  margin: 0 auto;
+  background: var(--bg-canvas);
+  color: var(--ink-1);
+  padding: var(--space-8);
+  border: 1px solid var(--line-3);
+  border-radius: var(--radius-md);
+  font-family: var(--font-zh);
+  font-size: var(--fs-body);
+  line-height: 1.5;
+}
+
+.section {
+  padding: var(--space-6) 0;
+  border-bottom: 1px solid var(--line-3);
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.microLabel {
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--ink-3);
+  margin-bottom: var(--space-1);
+}
+
+.sectionTitle {
+  font-family: var(--font-zh);
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  color: var(--ink-1);
+  margin-bottom: var(--space-4);
+  font-weight: 600;
+}
+
+/* Font samples */
+.fontSamples {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.fontSample {
+  padding: var(--space-3);
+  background: var(--bg-surface);
+  border: 1px solid var(--line-3);
+  border-radius: var(--radius-sm);
+}
+
+.fontLabel {
+  display: block;
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--ink-3);
+  margin-bottom: var(--space-1);
+}
+
+.fontZh {
+  font-family: var(--font-zh);
+  font-size: var(--fs-h3);
+  color: var(--ink-1);
+}
+
+.fontEn {
+  font-family: var(--font-en);
+  font-size: var(--fs-h3);
+  color: var(--ink-1);
+}
+
+.fontMono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body);
+  color: var(--ink-2);
+}
+
+/* Font size ramp */
+.fontSizes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.fontSizeRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  padding: var(--space-2) 0;
+}
+
+.fontSizeToken {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+  min-width: 120px;
+}
+
+.fontSizeSample {
+  font-family: var(--font-zh);
+  color: var(--ink-1);
+}
+
+/* Color grid */
+.colorGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--space-3);
+}
+
+.colorCell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.swatch {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-sm);
+}
+
+.colorName {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  color: var(--ink-1);
+}
+
+.colorGroup {
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--ink-3);
+}
+
+/* Demo card — mimics actual seating card look */
+.demoCard {
+  max-width: 360px;
+  padding: var(--space-5);
+  background: var(--bg-surface);
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.demoMicroLabel {
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--ink-3);
+  margin-bottom: var(--space-1);
+}
+
+.demoTitle {
+  font-family: var(--font-zh);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  color: var(--ink-1);
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--line-3);
+}
+
+.demoList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.demoList li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--line-3);
+}
+
+.demoList li:last-child {
+  border-bottom: none;
+}
+
+.demoSeatNum {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  color: var(--ink-3);
+  min-width: 20px;
+}
+
+.demoName {
+  font-family: var(--font-zh);
+  font-size: var(--fs-body);
+  color: var(--ink-1);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.demoNameVip {
+  font-family: var(--font-zh);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--vip);
+}
+
+.demoConflict {
+  background: color-mix(in srgb, var(--avoid) 10%, transparent);
+  margin: 0 calc(-1 * var(--space-3));
+  padding-left: var(--space-3);
+  padding-right: var(--space-3);
+}
+
+.demoBang {
+  color: var(--avoid);
+  font-weight: 700;
+}
+
+.demoFooter {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--line-3);
+}
+
+.demoStat {
+  font-family: var(--font-en);
+  font-size: var(--fs-caption);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--ink-3);
+}
+
+/* Utility grid (radius + shadow samples) */
+.utilityGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--space-4);
+}
+
+.utilityCell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.utilityBox {
+  width: 80px;
+  height: 80px;
+  background: var(--bg-surface);
+  border: 1px solid var(--line-2);
+}
+
+.utilityCell code {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  color: var(--ink-2);
+}

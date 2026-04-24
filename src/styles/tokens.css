@@ -1,0 +1,136 @@
+/*
+ * Seating Curator — Design Tokens
+ *
+ * Source of truth: docs/Seating Curator _ Design Handoff Notes.md §2
+ * Reverse-engineered from: Seating Curator Phase 5 v2 · standalone prototype
+ *
+ * Usage:
+ *   <div data-theme="private">...</div>   // 私人晚宴
+ *   <div data-theme="business">...</div>  // 商業活動
+ *
+ * Do NOT hardcode colors, fonts, or sizes in components —
+ * always reference via var(--token-name).
+ */
+
+/* ---------- Shared tokens (theme-agnostic) ---------- */
+
+:root {
+  /* Radius — intentionally small (2–6px) for paper/print feel, not SaaS */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  /* Space scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* Uppercase English label tracking (used for micro-labels) */
+  --tracking-wide: 0.14em;
+  --tracking-wider: 0.18em;
+}
+
+/* ---------- Private · 私人晚宴 ---------- */
+/* Warm beige, serif (Cormorant Garamond), antique gold.
+   Evokes ceremonial banquet atmosphere. */
+
+[data-theme="private"] {
+  /* Fonts */
+  --font-zh: "Noto Serif TC", "Songti TC", serif;
+  --font-en: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Font size ramp (Cormorant is narrow, can use larger sizes) */
+  --fs-micro: 10px;
+  --fs-caption: 11px;
+  --fs-body: 14px;
+  --fs-h3: 19px;
+  --fs-h2: 26px;
+  --fs-h1: 34px;
+  --fs-display: 46px;
+
+  /* 4-layer backgrounds */
+  --bg-canvas: #f4efe6;   /* 米白 */
+  --bg-surface: #fbf7ef;  /* 奶油 */
+  --bg-sunken: #ebe5d8;
+  --bg-hover: #efe9dc;
+
+  /* 3-layer ink */
+  --ink-1: #1a1916;       /* 黑墨 */
+  --ink-2: #4a4740;
+  --ink-3: #8c877c;
+
+  /* 3-layer lines */
+  --line-1: #2a2721;
+  --line-2: #c8c1b0;
+  --line-3: #e1dbcd;
+
+  /* Accent */
+  --accent: #1a1916;
+  --accent-soft: #ebe5d8;
+
+  /* Semantic */
+  --vip: #8a6b2e;         /* 古金 */
+  --must: #2a4b2d;        /* 墨綠 */
+  --avoid: #8a2a2a;       /* 牛血紅 */
+
+  /* Shadows (hover uses --bg-hover, not shadows — see §2.4) */
+  --shadow-sm: 0 1px 0 rgba(26, 25, 22, 0.06);
+  --shadow-md: 0 2px 8px rgba(26, 25, 22, 0.09);
+}
+
+/* ---------- Business · 商業活動 ---------- */
+/* Cold white, sans-serif (Inter), deep navy-black.
+   Evokes professional, contemporary authority. */
+
+[data-theme="business"] {
+  /* Fonts */
+  --font-zh: "Noto Sans TC", "PingFang TC", sans-serif;
+  --font-en: "Inter", "Helvetica Neue", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Font size ramp (Inter is wider, sizes scaled down to keep visual density) */
+  --fs-micro: 10px;
+  --fs-caption: 11px;
+  --fs-body: 13px;
+  --fs-h3: 17px;
+  --fs-h2: 22px;
+  --fs-h1: 28px;
+  --fs-display: 38px;
+
+  /* 4-layer backgrounds */
+  --bg-canvas: #f5f6f7;   /* 冷白 */
+  --bg-surface: #ffffff;  /* 純白 */
+  --bg-sunken: #edeef1;
+  --bg-hover: #f0f1f3;
+
+  /* 3-layer ink */
+  --ink-1: #0a1020;       /* 深藍黑 */
+  --ink-2: #3a4050;
+  --ink-3: #8a8f9a;
+
+  /* 3-layer lines */
+  --line-1: #0a1020;
+  --line-2: #ced2d9;
+  --line-3: #e5e7eb;
+
+  /* Accent */
+  --accent: #0a1020;
+  --accent-soft: #e0e3e8;
+
+  /* Semantic */
+  --vip: #b08d4a;         /* 暖金 */
+  --must: #1f3b34;        /* 深綠 */
+  --avoid: #b3261e;       /* 商業紅 */
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(10, 16, 32, 0.04);
+  --shadow-md: 0 4px 14px rgba(10, 16, 32, 0.08);
+}
