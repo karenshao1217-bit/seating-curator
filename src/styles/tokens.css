@@ -81,15 +81,17 @@
   --must: #2a4b2d;        /* 墨綠 */
   --avoid: #8a2a2a;       /* 牛血紅 */
 
-  /* Group palette (8 slots, stored in Firestore as "1".."8") */
-  --group-color-1: #8a6b2e;  /* 古金 */
-  --group-color-2: #2a4b2d;  /* 墨綠 */
-  --group-color-3: #2c3a5a;  /* 靛青 */
-  --group-color-4: #5a7040;  /* 森綠（提亮飽和以區分 slot 8） */
-  --group-color-5: #5c2b3d;  /* 暗紫梅 */
-  --group-color-6: #6a7e90;  /* 灰藍 */
-  --group-color-7: #a89d87;  /* 暖石灰 */
-  --group-color-8: #3a352e;  /* 深褐灰 */
+  /* Group palette (8 slots, stored in Firestore as "1".."8")
+   * Lightness ladder: 1 dark anchor / 4 mid / 3 light
+   * Hue coverage: gold, green, plum, teal, sky, sage, ink-black, warm stone */
+  --group-color-1: #8d6b2e;  /* 金（中亮金黃 L37） */
+  --group-color-2: #487d4f;  /* 綠（中亮綠 L40） */
+  --group-color-3: #954f6e;  /* 梅（中亮粉紫 L45） */
+  --group-color-4: #3d7a82;  /* 松石綠 teal（中亮 L37） */
+  --group-color-5: #a8c0d6;  /* 淡藍（淺色 1，夢幻藍 L72） */
+  --group-color-6: #b4bea4;  /* 苔綠（淺色 2，低飽和 L70） */
+  --group-color-7: #2d2821;  /* 墨黑（深色 2，L15） */
+  --group-color-8: #c5bfb3;  /* 暖石（中性淺灰 L75） */
 
   /* Shadows (hover uses --bg-hover, not shadows — see §2.4) */
   --shadow-sm: 0 1px 0 rgba(26, 25, 22, 0.06);
@@ -140,15 +142,16 @@
   --must: #1f3b34;        /* 深綠 */
   --avoid: #b3261e;       /* 商業紅 */
 
-  /* Group palette (8 slots, same slot key as private — stored as "1".."8") */
-  --group-color-1: #b08d4a;  /* 暖金 */
-  --group-color-2: #1f3b34;  /* 深綠 */
-  --group-color-3: #1d2554;  /* 深靛藍（比 slot 4 石藍更紫更深） */
-  --group-color-4: #3560a0;  /* 中藍（提亮飽和以區分 slot 8 石墨） */
-  --group-color-5: #6b3a56;  /* 冷紫梅 */
-  --group-color-6: #6a8ab0;  /* 淺石藍 */
-  --group-color-7: #a8adb5;  /* 冷石灰 */
-  --group-color-8: #2a3040;  /* 石墨 */
+  /* Group palette (8 slots, same slot key as private — stored as "1".."8")
+   * Same lightness ladder and hue roles as private, cool tint for business theme */
+  --group-color-1: #b28c3f;  /* 金（中亮金黃 L48） */
+  --group-color-2: #367859;  /* 綠（中亮冷綠 L35） */
+  --group-color-3: #9e5476;  /* 梅（中亮冷粉紫 L48） */
+  --group-color-4: #2d8aa8;  /* 孔雀藍 teal（中亮 L42） */
+  --group-color-5: #b1c9e3;  /* 淡藍（淺色 1，L75） */
+  --group-color-6: #a8c7b9;  /* 苔綠（淺色 2，L72） */
+  --group-color-7: #1a1e2c;  /* 墨黑（深色 2，L12） */
+  --group-color-8: #c4c7cd;  /* 冷石（中性淺灰 L78） */
 
   /* Shadows */
   --shadow-sm: 0 1px 2px rgba(10, 16, 32, 0.04);

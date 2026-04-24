@@ -9,14 +9,14 @@ interface Slot {
 }
 
 const SLOTS: Slot[] = [
-  { key: '1', name: '古金 / 暖金', privateHex: '#8a6b2e', businessHex: '#b08d4a' },
-  { key: '2', name: '墨綠 / 深綠', privateHex: '#2a4b2d', businessHex: '#1f3b34' },
-  { key: '3', name: '靛青 / 深靛藍', privateHex: '#2c3a5a', businessHex: '#1d2554' },
-  { key: '4', name: '森綠 / 中藍', privateHex: '#5a7040', businessHex: '#3560a0' },
-  { key: '5', name: '暗紫梅 / 冷紫梅', privateHex: '#5c2b3d', businessHex: '#6b3a56' },
-  { key: '6', name: '灰藍 / 淺石藍', privateHex: '#6a7e90', businessHex: '#6a8ab0' },
-  { key: '7', name: '暖石灰 / 冷石灰', privateHex: '#a89d87', businessHex: '#a8adb5' },
-  { key: '8', name: '深褐灰 / 石墨', privateHex: '#3a352e', businessHex: '#2a3040' },
+  { key: '1', name: '金 · 中亮金黃', privateHex: '#8d6b2e', businessHex: '#b28c3f' },
+  { key: '2', name: '綠 · 中亮綠', privateHex: '#487d4f', businessHex: '#367859' },
+  { key: '3', name: '梅 · 中亮粉紫', privateHex: '#954f6e', businessHex: '#9e5476' },
+  { key: '4', name: '松石綠 / 孔雀藍 · teal', privateHex: '#3d7a82', businessHex: '#2d8aa8' },
+  { key: '5', name: '淡藍 · 淺色 1', privateHex: '#a8c0d6', businessHex: '#b1c9e3' },
+  { key: '6', name: '苔綠 · 淺色 2', privateHex: '#b4bea4', businessHex: '#a8c7b9' },
+  { key: '7', name: '墨黑 · 深色錨點', privateHex: '#2d2821', businessHex: '#1a1e2c' },
+  { key: '8', name: '暖石 / 冷石 · 中性淺灰', privateHex: '#c5bfb3', businessHex: '#c4c7cd' },
 ]
 
 function ThemePanel({ theme, label }: { theme: 'private' | 'business'; label: string }) {
